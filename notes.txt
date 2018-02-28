@@ -1,0 +1,10 @@
+NOTES: (ordered by priority)
+- Fix access token issue
+    - Session expired, add new one into config? Check error
+- Filter events by going
+- Only show events from today onward (compare times)
+- Check if they are already added to Google Cal
+    - If not, get title, start date, where
+    - Convert to Google Cal object
+    - Add objects to Google Cal
+- Setup cronjob to do this dail? twice a week? weekly?
