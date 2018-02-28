@@ -23,7 +23,6 @@ def main():
   print('I have {} friends on Facebook!'.format(total_friends))
 
   events = graph.get_object(id=my_user_id, fields='events')
-#  print(events['events']['data'])
   print('I have {} events on my calendar right now!'.format(len(events['events']['data'])))
   print('They are:\n')
   for event in events['events']['data']:
