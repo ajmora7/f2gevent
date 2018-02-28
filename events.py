@@ -16,14 +16,19 @@ my_access_token = config.get('user_info', 'my_access_token')
 my_user_id = config.get('user_info', 'my_user_id')
 
 def main():
-  print('hello world!')
   graph = facebook.GraphAPI(access_token=my_access_token, version="2.1")
 
-  post = graph.get_object(id=my_user_id, fields='friends')
-  total_friends = post['friends']['summary']['total_count']
+  friends = graph.get_object(id=my_user_id, fields='friends')
+  total_friends = friends['friends']['summary']['total_count']
   print('I have {} friends on Facebook!'.format(total_friends))
 
-
+  events = graph.get_object(id=my_user_id, fields='events')
+#  print(events['events']['data'])
+  print('I have {} events on my calendar right now!'.format(len(events['events']['data'])))
+  print('They are:\n')
+  for event in events['events']['data']:
+    print('{}, {}'.format(event['name'], event['start_time']))
+    print('{}\n'.format(event['rsvp_status']))
 
 if __name__ == '__main__':
   main()
